@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 import { POCKETS_CURRENCY } from "./constants";
 
-const getSelectedCurrencies = state => state.selectedCurrency;
+const getSelectedCurrencies = state => state.currency;
 export const selectAvailableCurrencies = currencyFieldType =>
   createSelector(
     [getSelectedCurrencies],

@@ -2,6 +2,7 @@ import React from "react";
 import { CurrencyContextConsumer } from "./CurrencyContext";
 import { CURRENCY_SYMBOL } from "./constants";
 import { connect } from "react-redux";
+import "CurrencyBar.scss";
 
 const CurrencyBarComponent = ({
   selectedTargetCurrency,
@@ -27,8 +28,8 @@ const CurrencyBarComponent = ({
 );
 
 const mapStateToProps = state => ({
-  selectedTargetCurrency: state.selectedCurrency.target.value,
-  selectedSourceCurrency: state.selectedCurrency.source.value
+  selectedTargetCurrency: state.currency.target.value,
+  selectedSourceCurrency: state.currency.source.value
 });
 
 /* not using default export because it's harder to trace bugs */

@@ -8,6 +8,9 @@ import { FX_API_URL, POCKETS_CURRENCY, CURRENCY_TYPE } from "./constants";
 import axios from "axios";
 import { CurrencyBarContainer } from "./CurrencyBarContainer";
 import { SelectCurrencyContainer } from "./SelectCurrency";
+import { CurrencyInputContainer } from "./CurrencyInput";
+import { connect } from "react-redux";
+import { updateCurrencyRates } from "./actionCreators";
 
 class App extends Component {
   constructor(props) {
@@ -36,21 +39,62 @@ class App extends Component {
         // }, 10000);
       })
     ).then(currencies => {
+      this.props.updateCurrenciesRates(currencies);
       this.setState({ currencyContext: currencies });
     });
   }
 
   render() {
     return (
-      <CurrencyContextProvider
-        value={{ currencies: this.state.currencyContext }}
-      >
-        <SelectCurrencyContainer currencyFieldType={CURRENCY_TYPE.SOURCE} />
-        <CurrencyBarContainer />
-        <SelectCurrencyContainer currencyFieldType={CURRENCY_TYPE.TARGET} />
-      </CurrencyContextProvider>
+      <div className="App">
+        <CurrencyContextProvider
+          value={{ currencies: this.state.currencyContext }}
+        >
+          <div className="currency">
+            <div className="currency-row__item">
+              <div className="currency__select">
+                <SelectCurrencyContainer
+                  currencyFieldType={CURRENCY_TYPE.SOURCE}
+                />
+              </div>
+            </div>
+            <div className="currency-row__item">
+              <div className="currency__input-amount">
+                <CurrencyInputContainer
+                  currencyFieldType={CURRENCY_TYPE.SOURCE}
+                />
+              </div>
+            </div>
+          </div>
+          <CurrencyBarContainer />
+
+          <div className="currency">
+            <div className="currency-row__item">
+              <div className="currency__select">
+                <SelectCurrencyContainer
+                  currencyFieldType={CURRENCY_TYPE.TARGET}
+                />
+              </div>
+            </div>
+            <div className="currency-row__item">
+              <div className="currency__input-amount">
+                <CurrencyInputContainer
+                  currencyFieldType={CURRENCY_TYPE.TARGET}
+                />
+              </div>
+            </div>
+          </div>
+        </CurrencyContextProvider>
+      </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  updateCurrenciesRates: rates => dispatch(updateCurrencyRates(rates))
+});
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(App);
