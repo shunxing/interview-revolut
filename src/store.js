@@ -1,10 +1,11 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { combineReducers } from "redux";
+import logger from "redux-logger";
 
-const appReducer = (state = {}, action) => {
+const app = (state = { selectedTargetCurrency: "USD" }, action) => {
   return state;
 };
 
-const reducers = combineReducers({ appReducer });
+const reducers = combineReducers({ app });
 
-export const storeRedux = createStore(reducers);
+export const storeRedux = createStore(reducers, applyMiddleware(logger));
