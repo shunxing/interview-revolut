@@ -27,10 +27,11 @@ const CurrencyBarComponent = ({
 );
 
 const mapStateToProps = state => ({
-  selectedTargetCurrency: state.app.selectedTargetCurrency,
-  selectedSourceCurrency: state.app.selectedSourceCurrency
+  selectedTargetCurrency: state.selectedCurrency.target.value,
+  selectedSourceCurrency: state.selectedCurrency.source.value
 });
 
+/* not using default export because it's harder to trace bugs */
 export const CurrencyBarContainer = connect(mapStateToProps)(
   CurrencyBarComponent
 );

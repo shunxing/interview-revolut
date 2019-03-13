@@ -7,3 +7,8 @@ export const CURRENCY_SYMBOL = {
   USD: "$",
   GBP: "£"
 };
+
+export const CURRENCY_TYPE = {
+  SOURCE: "source",
+  TARGET: "target"
+};

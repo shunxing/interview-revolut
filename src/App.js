@@ -4,9 +4,10 @@ import {
   CurrencyContextProvider,
   initialCurrencyContext
 } from "CurrencyContext";
-import { FX_API_URL, POCKETS_CURRENCY } from "./constants";
+import { FX_API_URL, POCKETS_CURRENCY, CURRENCY_TYPE } from "./constants";
 import axios from "axios";
 import { CurrencyBarContainer } from "./CurrencyBarContainer";
+import { SelectCurrencyContainer } from "./SelectCurrency";
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class App extends Component {
       <CurrencyContextProvider
         value={{ currencies: this.state.currencyContext }}
       >
+        <SelectCurrencyContainer currencyFieldType={CURRENCY_TYPE.SOURCE} />
         <CurrencyBarContainer />
+        <SelectCurrencyContainer currencyFieldType={CURRENCY_TYPE.TARGET} />
       </CurrencyContextProvider>
     );
   }
