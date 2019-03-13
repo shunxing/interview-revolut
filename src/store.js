@@ -2,7 +2,10 @@ import { createStore, applyMiddleware } from "redux";
 import { combineReducers } from "redux";
 import logger from "redux-logger";
 
-const app = (state = { selectedTargetCurrency: "USD" }, action) => {
+const app = (
+  state = { selectedTargetCurrency: "USD", selectedSourceCurrency: "EUR" },
+  action
+) => {
   return state;
 };
 
