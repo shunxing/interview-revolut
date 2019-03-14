@@ -1,27 +1,23 @@
-import {
-  SELECT_CURRENCY,
-  UPDATE_CURRENCY_AMOUNT,
-  UPDATE_CURRENCY_RATES
-} from "./currencyActionTypes";
+import { SELECT_CURRENCY, UPDATE_CURRENCY_AMOUNT } from "./currencyActionTypes";
 
-export const selectCurrency = (selectedCurrency, currencyFieldType) => ({
+export const selectCurrency = ({
+  selectedCurrency,
+  currencyFieldType,
+  currencyRates
+}) => ({
   type: SELECT_CURRENCY,
   selectedCurrency,
-  currencyFieldType
+  currencyFieldType,
+  currencyRates
 });
 
-export const updateCurrencyAmount = (
+export const updateCurrencyAmount = ({
   currencyAmount,
   currencyFieldType,
-  currenciesRates
-) => ({
+  currencyRates
+}) => ({
   type: UPDATE_CURRENCY_AMOUNT,
   currencyAmount,
   currencyFieldType,
-  currenciesRates
-});
-
-export const updateCurrencyRates = rates => ({
-  type: UPDATE_CURRENCY_RATES,
-  rates
+  currencyRates
 });

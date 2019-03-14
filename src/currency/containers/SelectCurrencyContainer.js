@@ -6,16 +6,19 @@ import {
 } from "../../selectors";
 import { connect } from "react-redux";
 import { selectCurrency } from "../redux/currencyActionCreators";
+import { CurrencyContextConsumer } from "CurrencyContext";
 class SelectCurrency extends Component {
   render() {
     return (
-      <div>
-        <Select
-          value={this.props.selectedCurrency}
-          options={this.props.availableCurrencies}
-          onChange={this.props.selectCurrency}
-        />
-      </div>
+      <CurrencyContextConsumer>
+        {({ currencies }) => (
+          <Select
+            value={this.props.selectedCurrency}
+            options={this.props.availableCurrencies}
+            onChange={this.props.selectCurrency(currencies)}
+          />
+        )}
+      </CurrencyContextConsumer>
     );
   }
 }
@@ -28,8 +31,14 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  selectCurrency: selectedCurrency => {
-    dispatch(selectCurrency(selectedCurrency, ownProps.currencyFieldType));
+  selectCurrency: currencyRates => selectedCurrency => {
+    dispatch(
+      selectCurrency({
+        selectedCurrency,
+        currencyFieldType: ownProps.currencyFieldType,
+        currencyRates
+      })
+    );
   }
 });
 export const SelectCurrencyContainer = connect(

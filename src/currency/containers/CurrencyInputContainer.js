@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onUpdateCurrencyAmount: currenciesRates => event => {
+  onUpdateCurrencyAmount: currencyRates => event => {
     const match =
       event.target.value.match(/^\d+(,\d{3})*(\.\d{1,2})?$/) ||
       event.target.value.match(/^\d+(,)*(\.)?$/);
@@ -35,19 +35,19 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       event.target.value.match(/^\d+(,)*(\.)?$/)
     ) {
       dispatch(
-        updateCurrencyAmount(
-          match[0],
-          ownProps.currencyFieldType,
-          currenciesRates
-        )
+        updateCurrencyAmount({
+          currencyAmount: match[0],
+          currencyFieldType: ownProps.currencyFieldType,
+          currencyRates: currencyRates
+        })
       );
     } else if (event.target.value === "") {
       dispatch(
-        updateCurrencyAmount(
-          event.target.value,
-          ownProps.currencyFieldType,
-          currenciesRates
-        )
+        updateCurrencyAmount({
+          currencyAmount: event.target.value,
+          currencyFieldType: ownProps.currencyFieldType,
+          currencyRates: currencyRates
+        })
       );
     }
   }

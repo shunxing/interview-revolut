@@ -1,21 +1,14 @@
-import {
-  SELECT_CURRENCY,
-  UPDATE_CURRENCY_AMOUNT,
-  UPDATE_CURRENCY_RATES
-} from "./currencyActionTypes";
+import { SELECT_CURRENCY, UPDATE_CURRENCY_AMOUNT } from "./currencyActionTypes";
 import { CURRENCY_TYPE } from "../../constants";
 import { calculateContextCurrencyAmount } from "../../utils";
 
 const initialState = {
   [CURRENCY_TYPE.SOURCE]: { value: "EUR", label: "EUR", currencyAmount: "" },
-  [CURRENCY_TYPE.TARGET]: { value: "USD", label: "USD", currencyAmount: "" },
-  currencyRates: []
+  [CURRENCY_TYPE.TARGET]: { value: "USD", label: "USD", currencyAmount: "" }
 };
 
 export const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_CURRENCY_RATES:
-      return { ...state, currencyRates: action.rates };
     case SELECT_CURRENCY:
       const switchCurrencyCondition =
         (action.currencyFieldType === CURRENCY_TYPE.SOURCE &&
@@ -41,7 +34,7 @@ export const currencyReducer = (state = initialState, action) => {
                     state[CURRENCY_TYPE.SOURCE].currencyAmount,
                     action.selectedCurrency.value,
                     state[CURRENCY_TYPE.TARGET].value,
-                    state.currencyRates
+                    action.currencyRates
                   ) || ""
               }
             }
@@ -53,7 +46,7 @@ export const currencyReducer = (state = initialState, action) => {
                     state[CURRENCY_TYPE.TARGET].currencyAmount,
                     action.selectedCurrency.value,
                     state[CURRENCY_TYPE.SOURCE].value,
-                    state.currencyRates
+                    action.currencyRates
                   ) || ""
               }
             };
@@ -85,7 +78,7 @@ export const currencyReducer = (state = initialState, action) => {
                   action.currencyAmount,
                   state[CURRENCY_TYPE.SOURCE].value,
                   state[CURRENCY_TYPE.TARGET].value,
-                  state.currencyRates
+                  action.currencyRates
                 ) || ""
             }
           }
@@ -105,7 +98,7 @@ export const currencyReducer = (state = initialState, action) => {
                 action.currencyAmount,
                 state[CURRENCY_TYPE.TARGET].value,
                 state[CURRENCY_TYPE.SOURCE].value,
-                state.currencyRates
+                action.currencyRates
               ) || ""
           }
         }
