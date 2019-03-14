@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateCurrencyAmount } from "../redux/actionCreators";
+import { updateCurrencyAmount } from "../redux/currencyActionCreators";
 import TextField from "@material-ui/core/TextField";
 import { CurrencyContextConsumer } from "../../CurrencyContext";
 
@@ -27,12 +27,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onUpdateCurrencyAmount: currenciesRates => event => {
-    console.log(
-      event,
-      typeof event.target.value,
-      event.target.value,
-      event.target.value.match(/^\d+(,\d{3})*(\.\d{1,2})?$/)
-    );
     const match =
       event.target.value.match(/^\d+(,\d{3})*(\.\d{1,2})?$/) ||
       event.target.value.match(/^\d+(,)*(\.)?$/);

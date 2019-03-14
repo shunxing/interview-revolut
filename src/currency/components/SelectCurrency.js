@@ -5,7 +5,7 @@ import {
   getSelectedCurrency
 } from "../../selectors";
 import { connect } from "react-redux";
-import { selectCurrency } from "../redux/actionCreators";
+import { selectCurrency } from "../redux/currencyActionCreators";
 class SelectCurrency extends Component {
   render() {
     return (

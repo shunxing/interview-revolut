@@ -2,7 +2,7 @@ import {
   SELECT_CURRENCY,
   UPDATE_CURRENCY_AMOUNT,
   UPDATE_CURRENCY_RATES
-} from "./actionTypes";
+} from "./currencyActionTypes";
 import { CURRENCY_TYPE } from "../../constants";
 import { calculateContextCurrencyAmount } from "../../utils";
 
