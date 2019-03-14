@@ -8,7 +8,11 @@ export const calculateContextCurrencyAmount = (
     currency => currency.base === sourceCurrency
   );
   if (sourceCurrencyContext && sourceCurrencyContext.rates[targetCurrency]) {
-    return currencyAmount * sourceCurrencyContext.rates[targetCurrency];
+    return twoDigitsLimitDecimals(
+      currencyAmount * sourceCurrencyContext.rates[targetCurrency]
+    );
   }
   return 0;
 };
+
+export const twoDigitsLimitDecimals = number => parseFloat(number).toFixed(2);

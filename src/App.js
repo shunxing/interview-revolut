@@ -6,11 +6,11 @@ import {
 } from "CurrencyContext";
 import { FX_API_URL, POCKETS_CURRENCY, CURRENCY_TYPE } from "./constants";
 import axios from "axios";
-import { CurrencyBarContainer } from "./CurrencyBarContainer";
-import { SelectCurrencyContainer } from "./SelectCurrency";
-import { CurrencyInputContainer } from "./CurrencyInput";
+import { CurrencyBarContainer } from "currency/components/CurrencyBarContainer";
+import { SelectCurrencyContainer } from "currency/components/SelectCurrency";
+import { CurrencyInputContainer } from "currency/components/CurrencyInput";
 import { connect } from "react-redux";
-import { updateCurrencyRates } from "./actionCreators";
+import { updateCurrencyRates } from "currency/redux/actionCreators";
 
 class App extends Component {
   constructor(props) {

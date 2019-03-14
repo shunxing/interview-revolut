@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import { selectAvailableCurrencies, getSelectedCurrency } from "./selectors";
+import {
+  selectAvailableCurrencies,
+  getSelectedCurrency
+} from "../../selectors";
 import { connect } from "react-redux";
-import { selectCurrency } from "./actionCreators";
+import { selectCurrency } from "../redux/actionCreators";
 class SelectCurrency extends Component {
   render() {
     return (

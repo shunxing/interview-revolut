@@ -1,8 +1,8 @@
 import React from "react";
-import { CurrencyContextConsumer } from "./CurrencyContext";
-import { CURRENCY_SYMBOL } from "./constants";
+import { CurrencyContextConsumer } from "CurrencyContext";
+import { CURRENCY_SYMBOL } from "../../constants";
 import { connect } from "react-redux";
-import "CurrencyBar.scss";
+import "./CurrencyBar.scss";
 
 const CurrencyBarComponent = ({
   selectedTargetCurrency,
