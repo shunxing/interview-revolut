@@ -28,8 +28,8 @@ const CurrencyBarComponent = ({
 );
 
 const mapStateToProps = state => ({
-  selectedTargetCurrency: state.currency.target.value,
-  selectedSourceCurrency: state.currency.source.value
+  selectedTargetCurrency: state.currency.target.currency,
+  selectedSourceCurrency: state.currency.source.currency
 });
 
 /* not using default export because it's harder to trace bugs */

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { updateCurrencyAmount } from "../redux/currencyActionCreators";
 import TextField from "@material-ui/core/TextField";
 import { CurrencyContextConsumer } from "../../CurrencyContext";
+import { CURRENCY_TYPE } from "../../constants";
+import { InputAdornment } from "@material-ui/core";
 
 class CurrencyInput extends Component {
   render() {
@@ -14,6 +16,16 @@ class CurrencyInput extends Component {
             options={this.props.availableCurrencies}
             onChange={this.props.onUpdateCurrencyAmount(currencies)}
             placeholder="0"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {(this.props.currencyFieldType === CURRENCY_TYPE.SOURCE &&
+                    "-") ||
+                    (this.props.currencyFieldType === CURRENCY_TYPE.TARGET &&
+                      "+")}
+                </InputAdornment>
+              )
+            }}
           />
         )}
       </CurrencyContextConsumer>

@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  font-family: sans-serif;
 
   .currency {
     display: flex;
@@ -15,6 +16,8 @@
     &-row__item {
       flex: 1 1 0%;
       margin: 10px;
+      display: flex;
+      align-items: center;
     }
   }
 

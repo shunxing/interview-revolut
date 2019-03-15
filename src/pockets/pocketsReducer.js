@@ -1,11 +1,14 @@
 import { CONVERT_MONEY_POCKETS } from "./pocketsActionTypes";
-import { calculateContextCurrencyAmount } from "../utils";
+import {
+  calculateContextCurrencyAmount,
+  twoDigitsLimitDecimals
+} from "../utils";
 
 export const pocketsReducer = (
   state = {
-    EUR: { amount: "500" },
-    USD: { amount: "500" },
-    GBP: { amount: "500" }
+    EUR: { amount: 500 },
+    USD: { amount: 500 },
+    GBP: { amount: 500 }
   },
   action
 ) => {
@@ -17,28 +20,22 @@ export const pocketsReducer = (
         targetCurrency,
         currencyRates
       } = action.payload;
+
       const newBalanceTarget = {
         [targetCurrency]: {
           ...state[targetCurrency],
-          amount:
+          amount: twoDigitsLimitDecimals(
             parseFloat(state[targetCurrency].amount) +
-            calculateContextCurrencyAmount(
-              sourceAmount,
-              sourceCurrency,
-              targetCurrency,
-              currencyRates
-            )
+              calculateContextCurrencyAmount(
+                sourceAmount,
+                sourceCurrency,
+                targetCurrency,
+                currencyRates
+              )
+          )
         }
       };
 
-      console.log(
-        typeof calculateContextCurrencyAmount(
-          sourceAmount,
-          sourceCurrency,
-          targetCurrency,
-          currencyRates
-        )
-      );
       const newBalanceSource = {
         [sourceCurrency]: {
           ...state,

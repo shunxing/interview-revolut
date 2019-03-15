@@ -7,16 +7,13 @@ export const selectAvailableCurrencies = currencyFieldType =>
     [getSelectedCurrencies],
     selectedCurrencies => {
       return POCKETS_CURRENCY.filter(
-        currency => currency !== selectedCurrencies[currencyFieldType].value
-      ).map(availableCurrency => ({
-        label: availableCurrency,
-        value: availableCurrency
-      }));
+        currency => currency !== selectedCurrencies[currencyFieldType].currency
+      );
     }
   );
 
 export const getSelectedCurrency = currencyFieldType =>
   createSelector(
     [getSelectedCurrencies],
-    selectedCurrencies => selectedCurrencies[currencyFieldType]
+    selectedCurrencies => selectedCurrencies[currencyFieldType].currency
   );

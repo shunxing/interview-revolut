@@ -40,8 +40,8 @@ export const ExchangeMenuComponent = ({
 
 const mapStateToProps = (state, ownProps) => ({
   sourceAmount: state.currency[CURRENCY_TYPE.SOURCE].currencyAmount,
-  sourceCurrency: state.currency[CURRENCY_TYPE.SOURCE].value,
-  targetCurrency: state.currency[CURRENCY_TYPE.TARGET].value
+  sourceCurrency: state.currency[CURRENCY_TYPE.SOURCE].currency,
+  targetCurrency: state.currency[CURRENCY_TYPE.TARGET].currency
 });
 
 const mapDispatchToProps = dispatch => ({

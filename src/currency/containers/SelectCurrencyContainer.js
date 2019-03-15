@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Select from "react-select";
 import {
   selectAvailableCurrencies,
   getSelectedCurrency
@@ -7,6 +6,9 @@ import {
 import { connect } from "react-redux";
 import { selectCurrency } from "../redux/currencyActionCreators";
 import { CurrencyContextConsumer } from "CurrencyContext";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+
 class SelectCurrency extends Component {
   render() {
     return (
@@ -14,9 +16,15 @@ class SelectCurrency extends Component {
         {({ currencies }) => (
           <Select
             value={this.props.selectedCurrency}
-            options={this.props.availableCurrencies}
+            renderValue={() => this.props.selectedCurrency}
             onChange={this.props.selectCurrency(currencies)}
-          />
+          >
+            {this.props.availableCurrencies.map(currency => (
+              <MenuItem value={currency} key={currency}>
+                {currency}
+              </MenuItem>
+            ))}
+          </Select>
         )}
       </CurrencyContextConsumer>
     );
@@ -31,10 +39,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  selectCurrency: currencyRates => selectedCurrency => {
+  selectCurrency: currencyRates => event => {
     dispatch(
       selectCurrency({
-        selectedCurrency,
+        selectedCurrency: event.target.value,
         currencyFieldType: ownProps.currencyFieldType,
         currencyRates
       })
