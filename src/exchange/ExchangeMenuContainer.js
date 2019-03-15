@@ -18,11 +18,10 @@ export const ExchangeMenuComponent = ({
   <CurrencyContextConsumer>
     {({ currencies }) => (
       <>
+        <div className="title">Exchange menu</div>
         <ExchangeInput currencyFieldType={CURRENCY_TYPE.SOURCE} />
         <CurrencyBarContainer />
-
         <ExchangeInput currencyFieldType={CURRENCY_TYPE.TARGET} />
-
         <Fab
           variant="extended"
           color="secondary"

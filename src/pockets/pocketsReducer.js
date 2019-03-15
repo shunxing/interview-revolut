@@ -39,7 +39,9 @@ export const pocketsReducer = (
       const newBalanceSource = {
         [sourceCurrency]: {
           ...state,
-          amount: state[sourceCurrency].amount - sourceAmount
+          amount: twoDigitsLimitDecimals(
+            state[sourceCurrency].amount - sourceAmount
+          )
         }
       };
       return { ...state, ...newBalanceTarget, ...newBalanceSource };

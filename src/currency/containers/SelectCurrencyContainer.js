@@ -18,6 +18,13 @@ class SelectCurrency extends Component {
             value={this.props.selectedCurrency}
             renderValue={() => this.props.selectedCurrency}
             onChange={this.props.selectCurrency(currencies)}
+            MenuProps={{
+              getContentAnchorEl: null,
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "left"
+              }
+            }}
           >
             {this.props.availableCurrencies.map(currency => (
               <MenuItem value={currency} key={currency}>
