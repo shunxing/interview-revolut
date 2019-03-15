@@ -4,7 +4,7 @@ import { CURRENCY_SYMBOL } from "../constants";
 class Pocket extends Component {
   render() {
     return (
-      <div>
+      <div className="balance">
         Balance: {this.props.currentPocket.amount}{" "}
         {CURRENCY_SYMBOL[this.props.currency] || this.props.currency}{" "}
       </div>

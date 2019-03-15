@@ -1,24 +1,76 @@
+body {
+  margin: 0;
+}
 .App {
-  max-width: 1024px;
-  height: 50vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   font-family: sans-serif;
 
+  background: linear-gradient(
+    to right,
+    #27c6ec,
+    #19bce9,
+    #12b1e5,
+    #16a7e0,
+    #209cdb
+  );
+  height: 100vh;
+  width: 100vw;
+
   .currency {
     display: flex;
     justify-content: space-between;
     width: 100%;
 
+    &--middle {
+      display: flex;
+      min-width: 20%;
+      justify-content: space-around;
+    }
     &-row__item {
       flex: 1 1 0%;
-      margin: 10px;
+      margin: 30px;
+      display: flex;
+      align-items: flex-start;
+
+      &--left {
+        justify-content: flex-end;
+      }
+    }
+
+    &__select {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 75px;
+      text-align: right;
+    }
+
+    &__bar {
       display: flex;
       align-items: center;
+      color: darken(#209cdb, 10%);
+      background: white;
+      border-radius: 50px;
+      border: 3px solid darken(#209cdb, 10%);
+      padding: 10px;
+
+      &__text {
+        margin-left: 10px;
+      }
     }
+
+    &__switch-currency {
+      margin: 0 20px;
+    }
+  }
+
+  .balance {
+    font-size: 1rem;
+    color: #f3f4f5;
+    font-style: italic;
   }
 
   input[type="number"]::-webkit-inner-spin-button,
