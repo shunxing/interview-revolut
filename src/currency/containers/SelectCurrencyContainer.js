@@ -9,15 +9,20 @@ import { CurrencyContextConsumer } from "CurrencyContext";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
-class SelectCurrency extends Component {
+export class SelectCurrencyComponent extends Component {
   render() {
+    const {
+      selectedCurrency = "",
+      availableCurrencies = [],
+      selectCurrency
+    } = this.props;
     return (
       <CurrencyContextConsumer>
         {({ currencies }) => (
           <Select
-            value={this.props.selectedCurrency}
-            renderValue={() => this.props.selectedCurrency}
-            onChange={this.props.selectCurrency(currencies)}
+            value={selectedCurrency}
+            renderValue={() => selectedCurrency}
+            onChange={selectCurrency(currencies)}
             MenuProps={{
               getContentAnchorEl: null,
               anchorOrigin: {
@@ -26,7 +31,7 @@ class SelectCurrency extends Component {
               }
             }}
           >
-            {this.props.availableCurrencies.map(currency => (
+            {availableCurrencies.map(currency => (
               <MenuItem value={currency} key={currency}>
                 {currency}
               </MenuItem>
@@ -59,4 +64,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export const SelectCurrencyContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SelectCurrency);
+)(SelectCurrencyComponent);

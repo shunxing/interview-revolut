@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CURRENCY_SYMBOL } from "../constants";
-class Pocket extends Component {
+export class PocketComponent extends Component {
   render() {
+    const { currentPocket = {}, currency = "" } = this.props;
     return (
       <div className="balance">
-        Balance: {this.props.currentPocket.amount}{" "}
-        {CURRENCY_SYMBOL[this.props.currency] || this.props.currency}{" "}
+        Balance: {currentPocket.amount} {CURRENCY_SYMBOL[currency] || currency}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+export const mapStateToProps = (state, ownProps) => ({
   currentPocket:
     state.pockets[state.currency[ownProps.currencyFieldType].currency],
   currency: state.currency[ownProps.currencyFieldType].currency
 });
 
-export const PocketContainer = connect(mapStateToProps)(Pocket);
+export const PocketContainer = connect(mapStateToProps)(PocketComponent);

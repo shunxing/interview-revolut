@@ -1,13 +1,15 @@
 import { createSelector } from "reselect";
 import { POCKETS_CURRENCY } from "./constants";
-
-const getSelectedCurrencies = state => state.currency;
+import get from "lodash/get";
+export const getSelectedCurrencies = state => state.currency;
 export const selectAvailableCurrencies = currencyFieldType =>
   createSelector(
     [getSelectedCurrencies],
     selectedCurrencies => {
       return POCKETS_CURRENCY.filter(
-        currency => currency !== selectedCurrencies[currencyFieldType].currency
+        currency =>
+          currency !==
+          get(selectedCurrencies, `[${currencyFieldType}].currency`)
       );
     }
   );
@@ -15,5 +17,6 @@ export const selectAvailableCurrencies = currencyFieldType =>
 export const getSelectedCurrency = currencyFieldType =>
   createSelector(
     [getSelectedCurrencies],
-    selectedCurrencies => selectedCurrencies[currencyFieldType].currency
+    selectedCurrencies =>
+      get(selectedCurrencies, `[${currencyFieldType}].currency`)
   );

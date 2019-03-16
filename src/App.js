@@ -17,8 +17,6 @@ class App extends Component {
   componentDidMount() {
     Promise.all(
       POCKETS_CURRENCY.map(currentCurrency => {
-        // setInterval(() => {
-        // TODO REMOVE COMMENT
         return axios
           .get(
             `${FX_API_URL}/latest?symbols=${POCKETS_CURRENCY.filter(
@@ -32,11 +30,31 @@ class App extends Component {
             console.error("Fetch currency failed");
             console.error(error);
           });
-        // }, 10000);
       })
     ).then(currencies => {
       this.setState({ currencyContext: currencies });
     });
+    setInterval(() => {
+      Promise.all(
+        POCKETS_CURRENCY.map(currentCurrency => {
+          return axios
+            .get(
+              `${FX_API_URL}/latest?symbols=${POCKETS_CURRENCY.filter(
+                filteredCurrency => filteredCurrency !== currentCurrency
+              ).join(",")}&base=${currentCurrency}`
+            )
+            .then(res => {
+              return res.data;
+            })
+            .catch(error => {
+              console.error("Fetch currency failed");
+              console.error(error);
+            });
+        })
+      ).then(currencies => {
+        this.setState({ currencyContext: currencies });
+      });
+    }, 10000);
   }
 
   render() {

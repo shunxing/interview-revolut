@@ -6,8 +6,8 @@ import "./CurrencyBar.scss";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
 import CompareArrows from "@material-ui/icons/CompareArrows";
 import Fab from "@material-ui/core/Fab";
-
-const CurrencyBarComponent = ({
+import { get } from "lodash";
+export const CurrencyBarComponent = ({
   selectedTargetCurrency,
   selectedSourceCurrency
 }) => (
@@ -19,28 +19,26 @@ const CurrencyBarComponent = ({
       return (
         <>
           <div className="currency--middle">
-            {selectedSourceCurrencyContext &&
-              selectedSourceCurrencyContext.rates[selectedTargetCurrency] && (
-                <div className="currency__bar">
-                  <ShowChartIcon />
-                  <div className="currency__bar__text">
-                    {`1${
-                      CURRENCY_SYMBOL[selectedSourceCurrencyContext.base]
-                    } = ${
-                      selectedSourceCurrencyContext.rates[
-                        selectedTargetCurrency
-                      ]
-                    } ${CURRENCY_SYMBOL[selectedTargetCurrency]}`}
-                  </div>
+            {get(
+              selectedSourceCurrencyContext,
+              `rates[${selectedTargetCurrency}]`
+            ) && (
+              <div className="currency__bar">
+                <ShowChartIcon />
+                <div className="currency__bar__text">
+                  {`1${CURRENCY_SYMBOL[selectedSourceCurrencyContext.base]} = ${
+                    selectedSourceCurrencyContext.rates[selectedTargetCurrency]
+                  } ${CURRENCY_SYMBOL[selectedTargetCurrency]}`}
                 </div>
-              )}
+              </div>
+            )}
             <div className="currency__switch-currency">
               <Fab color="secondary">
                 <div style={{ transform: "rotate(90deg)" }}>
                   <CompareArrows />
                 </div>
               </Fab>
-            </div>{" "}
+            </div>
           </div>
         </>
       );

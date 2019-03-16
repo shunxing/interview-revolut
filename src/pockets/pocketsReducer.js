@@ -26,11 +26,13 @@ export const pocketsReducer = (
           ...state[targetCurrency],
           amount: twoDigitsLimitDecimals(
             parseFloat(state[targetCurrency].amount) +
-              calculateContextCurrencyAmount(
-                sourceAmount,
-                sourceCurrency,
-                targetCurrency,
-                currencyRates
+              parseFloat(
+                calculateContextCurrencyAmount(
+                  sourceAmount,
+                  sourceCurrency,
+                  targetCurrency,
+                  currencyRates
+                )
               )
           )
         }
@@ -38,12 +40,13 @@ export const pocketsReducer = (
 
       const newBalanceSource = {
         [sourceCurrency]: {
-          ...state,
+          ...state[sourceCurrency],
           amount: twoDigitsLimitDecimals(
             state[sourceCurrency].amount - sourceAmount
           )
         }
       };
+
       return { ...state, ...newBalanceTarget, ...newBalanceSource };
     default:
       return state;

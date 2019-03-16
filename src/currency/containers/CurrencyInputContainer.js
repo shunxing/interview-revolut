@@ -6,7 +6,7 @@ import { CurrencyContextConsumer } from "../../CurrencyContext";
 import { CURRENCY_TYPE } from "../../constants";
 import { InputAdornment } from "@material-ui/core";
 
-class CurrencyInput extends Component {
+export class CurrencyInputComponent extends Component {
   render() {
     return (
       <CurrencyContextConsumer>
@@ -39,13 +39,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onUpdateCurrencyAmount: currencyRates => event => {
+    const currencyAmount = event.target.value;
     const match =
-      event.target.value.match(/^\d+(,\d{3})*(\.\d{1,2})?$/) ||
-      event.target.value.match(/^\d+(,)*(\.)?$/);
-    if (
-      event.target.value.match(/^\d+(,\d{3})*(\.\d{1,2})?$/) ||
-      event.target.value.match(/^\d+(,)*(\.)?$/)
-    ) {
+      currencyAmount.match(/^\d+(,\d{3})*(\.\d{1,2})?$/) ||
+      currencyAmount.match(/^\d+(,)*(\.)?$/);
+    if (match) {
       dispatch(
         updateCurrencyAmount({
           currencyAmount: match[0],
@@ -53,10 +51,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           currencyRates: currencyRates
         })
       );
-    } else if (event.target.value === "") {
+    } else if (currencyAmount === "") {
       dispatch(
         updateCurrencyAmount({
-          currencyAmount: event.target.value,
+          currencyAmount: currencyAmount,
           currencyFieldType: ownProps.currencyFieldType,
           currencyRates: currencyRates
         })
@@ -68,4 +66,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export const CurrencyInputContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(CurrencyInput);
+)(CurrencyInputComponent);

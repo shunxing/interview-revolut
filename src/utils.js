@@ -1,20 +1,19 @@
+import { get } from "lodash";
 export const calculateContextCurrencyAmount = (
   currencyAmount,
   sourceCurrency,
   targetCurrency,
   currencies
 ) => {
-  const sourceCurrencyContext = currencies.find(
-    currency => currency.base === sourceCurrency
-  );
-  if (sourceCurrencyContext && sourceCurrencyContext.rates[targetCurrency]) {
-    return parseFloat(
-      twoDigitsLimitDecimals(
-        currencyAmount * sourceCurrencyContext.rates[targetCurrency]
-      )
+  const sourceCurrencyContext =
+    currencies && currencies.find(currency => currency.base === sourceCurrency);
+  if (get(sourceCurrencyContext, `rates[${targetCurrency}]`)) {
+    return twoDigitsLimitDecimals(
+      parseFloat(currencyAmount * sourceCurrencyContext.rates[targetCurrency])
     );
   }
   return 0;
 };
 
-export const twoDigitsLimitDecimals = number => parseFloat(number).toFixed(2);
+export const twoDigitsLimitDecimals = number =>
+  !isNaN(parseFloat(number)) ? parseFloat(number).toFixed(2) : undefined;

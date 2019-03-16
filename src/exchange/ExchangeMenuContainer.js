@@ -22,25 +22,33 @@ export const ExchangeMenuComponent = ({
         <ExchangeInput currencyFieldType={CURRENCY_TYPE.SOURCE} />
         <CurrencyBarContainer />
         <ExchangeInput currencyFieldType={CURRENCY_TYPE.TARGET} />
-        <Fab
-          variant="extended"
-          color="secondary"
-          onClick={convertMoney({
-            currencyRates: currencies,
-            sourceAmount,
-            sourceCurrency,
-            targetCurrency
-          })}
-          disabled={sourceAmount === "" || sourceAmount > sourcePocketAmount}
-        >
-          Confirm exchange
-        </Fab>
+        {typeof convertMoney === "function" && (
+          <Fab
+            variant="extended"
+            color="secondary"
+            onClick={convertMoney({
+              currencyRates: currencies,
+              sourceAmount,
+              sourceCurrency,
+              targetCurrency
+            })}
+            disabled={
+              sourceAmount === "" ||
+              parseFloat(sourceAmount) > parseFloat(sourcePocketAmount)
+            }
+          >
+            Confirm exchange
+          </Fab>
+        )}
       </>
     )}
   </CurrencyContextConsumer>
 );
 
-const mapStateToProps = (state, ownProps) => ({
+/** to be improved (exporting internal code is not that good but it's one of the way of testing and increase test coverage)
+ * https://jsramblings.com/2018/01/15/3-ways-to-test-mapStateToProps-and-mapDispatchToProps.html
+ */
+export const mapStateToProps = (state, ownProps) => ({
   sourceAmount: state.currency[CURRENCY_TYPE.SOURCE].currencyAmount,
   sourcePocketAmount:
     state.pockets[state.currency[CURRENCY_TYPE.SOURCE].currency].amount,
@@ -49,7 +57,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  convertMoney: payload => event => dispatch(convertMoneyPockets(payload))
+  convertMoney: payload => event => convertMoneyPockets(payload)
 });
 
 export const ExchangeMenuContainer = connect(

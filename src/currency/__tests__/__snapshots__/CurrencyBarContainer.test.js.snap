@@ -1,0 +1,425 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyBarComponent should match snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    currencies={
+      Array [
+        Object {
+          "base": "EUR",
+          "rates": Object {
+            "USD": "123",
+          },
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <div
+        className="currency--middle"
+      >
+        <div
+          className="currency__bar"
+        >
+          <pure(ShowChartIcon) />
+          <div
+            className="currency__bar__text"
+          >
+            1€ = 123 $
+          </div>
+        </div>
+        <div
+          className="currency__switch-currency"
+        >
+          <WithStyles(Fab)
+            color="secondary"
+          >
+            <div
+              style={
+                Object {
+                  "transform": "rotate(90deg)",
+                }
+              }
+            >
+              <pure(CompareArrowsIcon) />
+            </div>
+          </WithStyles(Fab)>
+        </div>
+      </div>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="currency__bar"
+          >
+            <pure(ShowChartIcon) />
+            <div
+              className="currency__bar__text"
+            >
+              1€ = 123 $
+            </div>
+          </div>,
+          <div
+            className="currency__switch-currency"
+          >
+            <WithStyles(Fab)
+              color="secondary"
+            >
+              <div
+                style={
+                  Object {
+                    "transform": "rotate(90deg)",
+                  }
+                }
+              >
+                <pure(CompareArrowsIcon) />
+              </div>
+            </WithStyles(Fab)>
+          </div>,
+        ],
+        "className": "currency--middle",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <pure(ShowChartIcon) />,
+              <div
+                className="currency__bar__text"
+              >
+                1€ = 123 $
+              </div>,
+            ],
+            "className": "currency__bar",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "1€ = 123 $",
+                "className": "currency__bar__text",
+              },
+              "ref": null,
+              "rendered": "1€ = 123 $",
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <WithStyles(Fab)
+              color="secondary"
+            >
+              <div
+                style={
+                  Object {
+                    "transform": "rotate(90deg)",
+                  }
+                }
+              >
+                <pure(CompareArrowsIcon) />
+              </div>
+            </WithStyles(Fab)>,
+            "className": "currency__switch-currency",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <div
+                style={
+                  Object {
+                    "transform": "rotate(90deg)",
+                  }
+                }
+              >
+                <pure(CompareArrowsIcon) />
+              </div>,
+              "color": "secondary",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <pure(CompareArrowsIcon) />,
+                "style": Object {
+                  "transform": "rotate(90deg)",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            "type": [Function],
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <div
+          className="currency--middle"
+        >
+          <div
+            className="currency__bar"
+          >
+            <pure(ShowChartIcon) />
+            <div
+              className="currency__bar__text"
+            >
+              1€ = 123 $
+            </div>
+          </div>
+          <div
+            className="currency__switch-currency"
+          >
+            <WithStyles(Fab)
+              color="secondary"
+            >
+              <div
+                style={
+                  Object {
+                    "transform": "rotate(90deg)",
+                  }
+                }
+              >
+                <pure(CompareArrowsIcon) />
+              </div>
+            </WithStyles(Fab)>
+          </div>
+        </div>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="currency__bar"
+            >
+              <pure(ShowChartIcon) />
+              <div
+                className="currency__bar__text"
+              >
+                1€ = 123 $
+              </div>
+            </div>,
+            <div
+              className="currency__switch-currency"
+            >
+              <WithStyles(Fab)
+                color="secondary"
+              >
+                <div
+                  style={
+                    Object {
+                      "transform": "rotate(90deg)",
+                    }
+                  }
+                >
+                  <pure(CompareArrowsIcon) />
+                </div>
+              </WithStyles(Fab)>
+            </div>,
+          ],
+          "className": "currency--middle",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <pure(ShowChartIcon) />,
+                <div
+                  className="currency__bar__text"
+                >
+                  1€ = 123 $
+                </div>,
+              ],
+              "className": "currency__bar",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "1€ = 123 $",
+                  "className": "currency__bar__text",
+                },
+                "ref": null,
+                "rendered": "1€ = 123 $",
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Fab)
+                color="secondary"
+              >
+                <div
+                  style={
+                    Object {
+                      "transform": "rotate(90deg)",
+                    }
+                  }
+                >
+                  <pure(CompareArrowsIcon) />
+                </div>
+              </WithStyles(Fab)>,
+              "className": "currency__switch-currency",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <div
+                  style={
+                    Object {
+                      "transform": "rotate(90deg)",
+                    }
+                  }
+                >
+                  <pure(CompareArrowsIcon) />
+                </div>,
+                "color": "secondary",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <pure(CompareArrowsIcon) />,
+                  "style": Object {
+                    "transform": "rotate(90deg)",
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": "div",
+              },
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
