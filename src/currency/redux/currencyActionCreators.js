@@ -1,4 +1,8 @@
-import { SELECT_CURRENCY, UPDATE_CURRENCY_AMOUNT } from "./currencyActionTypes";
+import {
+  SELECT_CURRENCY,
+  UPDATE_CURRENCY_AMOUNT,
+  SWITCH_SOURCE_TARGET_CURRENCY
+} from "./currencyActionTypes";
 
 export const selectCurrency = ({
   selectedCurrency,
@@ -20,4 +24,8 @@ export const updateCurrencyAmount = ({
   currencyAmount,
   currencyFieldType,
   currencyRates
+});
+
+export const switchSourceTargetCurrency = () => ({
+  type: SWITCH_SOURCE_TARGET_CURRENCY
 });

@@ -1,10 +1,12 @@
 import {
   selectCurrency,
-  updateCurrencyAmount
+  updateCurrencyAmount,
+  switchSourceTargetCurrency
 } from "../currencyActionCreators";
 import {
   SELECT_CURRENCY,
-  UPDATE_CURRENCY_AMOUNT
+  UPDATE_CURRENCY_AMOUNT,
+  SWITCH_SOURCE_TARGET_CURRENCY
 } from "../currencyActionTypes";
 
 describe("selectCurrency", () => {
@@ -37,6 +39,14 @@ describe("updateCurrencyAmount", () => {
       currencyAmount: "currencyAmountTest",
       currencyFieldType: "currencyFieldTypeTest",
       currencyRates: "currencyRates"
+    });
+  });
+});
+
+describe("switchSourceTargetCurrency", () => {
+  it("should return switchSourceTargetCurrency action type", () => {
+    expect(switchSourceTargetCurrency()).toEqual({
+      type: SWITCH_SOURCE_TARGET_CURRENCY
     });
   });
 });

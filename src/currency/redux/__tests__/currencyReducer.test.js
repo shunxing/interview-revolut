@@ -2,7 +2,8 @@ import { currencyReducer } from "../currencyReducer";
 import { CURRENCY_TYPE } from "../../../constants";
 import {
   SELECT_CURRENCY,
-  UPDATE_CURRENCY_AMOUNT
+  UPDATE_CURRENCY_AMOUNT,
+  SWITCH_SOURCE_TARGET_CURRENCY
 } from "../currencyActionTypes";
 
 describe("currencyReducer : should handle SELECT_CURRENCY", () => {
@@ -63,8 +64,8 @@ describe("currencyReducer : should handle SELECT_CURRENCY", () => {
       )
     ).toEqual({
       otherPartState: "test",
-      source: { currency: "GBP", currencyAmount: "100" },
-      target: { currency: "USD", currencyAmount: "150.00" }
+      [CURRENCY_TYPE.SOURCE]: { currency: "GBP", currencyAmount: "100" },
+      [CURRENCY_TYPE.TARGET]: { currency: "USD", currencyAmount: "150.00" }
     });
   });
 
@@ -85,8 +86,8 @@ describe("currencyReducer : should handle SELECT_CURRENCY", () => {
       )
     ).toEqual({
       otherPartState: "test",
-      source: { currency: "EUR", currencyAmount: "300.00" },
-      target: { currency: "GBP", currencyAmount: "200" }
+      [CURRENCY_TYPE.SOURCE]: { currency: "EUR", currencyAmount: "300.00" },
+      [CURRENCY_TYPE.TARGET]: { currency: "GBP", currencyAmount: "200" }
     });
   });
 });
@@ -109,8 +110,8 @@ describe("currencyReducer : should handle UPDATE_CURRENCY_AMOUNT", () => {
       )
     ).toEqual({
       otherPartState: "test",
-      source: { currency: "EUR", currencyAmount: "1" },
-      target: { currency: "USD", currencyAmount: "1.50" }
+      [CURRENCY_TYPE.SOURCE]: { currency: "EUR", currencyAmount: "1" },
+      [CURRENCY_TYPE.TARGET]: { currency: "USD", currencyAmount: "1.50" }
     });
   });
 
@@ -131,8 +132,36 @@ describe("currencyReducer : should handle UPDATE_CURRENCY_AMOUNT", () => {
       )
     ).toEqual({
       otherPartState: "test",
-      source: { currency: "EUR", currencyAmount: "1.50" },
-      target: { currency: "USD", currencyAmount: "1" }
+      [CURRENCY_TYPE.SOURCE]: { currency: "EUR", currencyAmount: "1.50" },
+      [CURRENCY_TYPE.TARGET]: { currency: "USD", currencyAmount: "1" }
+    });
+  });
+});
+
+describe("currencyReducer: should handle SWITCH_SOURCE_TARGET_CURRENCY", () => {
+  it("should invert target and source currency value in state", () => {
+    expect(
+      currencyReducer(
+        {
+          [CURRENCY_TYPE.SOURCE]: { sourceTestKey: "sourceTestValue" },
+          [CURRENCY_TYPE.TARGET]: { targetTestKey: "targetTestValue" },
+          otherPartState: "otherPartState"
+        },
+        { type: SWITCH_SOURCE_TARGET_CURRENCY }
+      )
+    ).toEqual({
+      [CURRENCY_TYPE.SOURCE]: { targetTestKey: "targetTestValue" },
+      [CURRENCY_TYPE.TARGET]: { sourceTestKey: "sourceTestValue" },
+      otherPartState: "otherPartState"
+    });
+  });
+
+  it("should create empty object for target and source currency when missing keys in state", () => {
+    expect(
+      currencyReducer({}, { type: SWITCH_SOURCE_TARGET_CURRENCY })
+    ).toEqual({
+      [CURRENCY_TYPE.SOURCE]: {},
+      [CURRENCY_TYPE.TARGET]: {}
     });
   });
 });

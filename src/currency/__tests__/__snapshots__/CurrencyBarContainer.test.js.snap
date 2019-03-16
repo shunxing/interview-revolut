@@ -177,6 +177,7 @@ ShallowWrapper {
                 <pure(CompareArrowsIcon) />
               </div>,
               "color": "secondary",
+              "onClick": undefined,
             },
             "ref": null,
             "rendered": Object {
@@ -364,6 +365,7 @@ ShallowWrapper {
                   <pure(CompareArrowsIcon) />
                 </div>,
                 "color": "secondary",
+                "onClick": undefined,
               },
               "ref": null,
               "rendered": Object {

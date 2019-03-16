@@ -7,9 +7,11 @@ import ShowChartIcon from "@material-ui/icons/ShowChart";
 import CompareArrows from "@material-ui/icons/CompareArrows";
 import Fab from "@material-ui/core/Fab";
 import { get } from "lodash";
+import { switchSourceTargetCurrency } from "../redux/currencyActionCreators";
 export const CurrencyBarComponent = ({
   selectedTargetCurrency,
-  selectedSourceCurrency
+  selectedSourceCurrency,
+  switchSourceTargetCurrency
 }) => (
   <CurrencyContextConsumer>
     {context => {
@@ -33,7 +35,7 @@ export const CurrencyBarComponent = ({
               </div>
             )}
             <div className="currency__switch-currency">
-              <Fab color="secondary">
+              <Fab color="secondary" onClick={switchSourceTargetCurrency}>
                 <div style={{ transform: "rotate(90deg)" }}>
                   <CompareArrows />
                 </div>
@@ -51,7 +53,12 @@ const mapStateToProps = state => ({
   selectedSourceCurrency: state.currency.source.currency
 });
 
+const mapDispatchToProps = dispatch => ({
+  switchSourceTargetCurrency: event => dispatch(switchSourceTargetCurrency())
+});
+
 /* not using default export because it's harder to trace bugs */
-export const CurrencyBarContainer = connect(mapStateToProps)(
-  CurrencyBarComponent
-);
+export const CurrencyBarContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CurrencyBarComponent);

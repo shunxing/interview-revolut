@@ -57,7 +57,7 @@ export const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  convertMoney: payload => event => convertMoneyPockets(payload)
+  convertMoney: payload => event => dispatch(convertMoneyPockets(payload))
 });
 
 export const ExchangeMenuContainer = connect(

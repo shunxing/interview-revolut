@@ -1,4 +1,8 @@
-import { SELECT_CURRENCY, UPDATE_CURRENCY_AMOUNT } from "./currencyActionTypes";
+import {
+  SELECT_CURRENCY,
+  UPDATE_CURRENCY_AMOUNT,
+  SWITCH_SOURCE_TARGET_CURRENCY
+} from "./currencyActionTypes";
 import { CURRENCY_TYPE } from "../../constants";
 import { calculateContextCurrencyAmount } from "../../utils";
 
@@ -101,6 +105,13 @@ export const currencyReducer = (state = initialState, action) => {
               ) || ""
           }
         }
+      };
+
+    case SWITCH_SOURCE_TARGET_CURRENCY:
+      return {
+        ...state,
+        [CURRENCY_TYPE.SOURCE]: state[CURRENCY_TYPE.TARGET] || {},
+        [CURRENCY_TYPE.TARGET]: state[CURRENCY_TYPE.SOURCE] || {}
       };
     default:
       return state;
