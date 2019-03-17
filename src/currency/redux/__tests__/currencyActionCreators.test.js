@@ -1,12 +1,14 @@
 import {
   selectCurrency,
   updateCurrencyAmount,
-  switchSourceTargetCurrency
+  switchSourceTargetCurrency,
+  selectMenuCurrency
 } from "../currencyActionCreators";
 import {
   SELECT_CURRENCY,
   UPDATE_CURRENCY_AMOUNT,
-  SWITCH_SOURCE_TARGET_CURRENCY
+  SWITCH_SOURCE_TARGET_CURRENCY,
+  SELECT_MENU_CURRENCY
 } from "../currencyActionTypes";
 
 describe("selectCurrency", () => {
@@ -47,6 +49,21 @@ describe("switchSourceTargetCurrency", () => {
   it("should return switchSourceTargetCurrency action type", () => {
     expect(switchSourceTargetCurrency()).toEqual({
       type: SWITCH_SOURCE_TARGET_CURRENCY
+    });
+  });
+});
+
+describe("selectMenuCurrency", () => {
+  it("should return selectMenuCurrency action type", () => {
+    expect(
+      selectMenuCurrency({
+        testSelectedCurrenciesKey: "testSelectedCurrenciesValue"
+      })
+    ).toEqual({
+      type: SELECT_MENU_CURRENCY,
+      selectedCurrencies: {
+        testSelectedCurrenciesKey: "testSelectedCurrenciesValue"
+      }
     });
   });
 });

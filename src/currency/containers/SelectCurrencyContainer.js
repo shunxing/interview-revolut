@@ -1,42 +1,44 @@
 import React, { Component } from "react";
-import {
-  selectAvailableCurrencies,
-  getSelectedCurrency
-} from "../../selectors";
+import { getSelectedCurrency } from "../../selectors";
 import { connect } from "react-redux";
 import { selectCurrency } from "../redux/currencyActionCreators";
 import { CurrencyContextConsumer } from "CurrencyContext";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import { CurrenciesMenuDataContextConsumer } from "../../CurrencyContext";
 
 export class SelectCurrencyComponent extends Component {
   render() {
-    const {
-      selectedCurrency = "",
-      availableCurrencies = [],
-      selectCurrency
-    } = this.props;
+    const { selectedCurrency = "", selectCurrency } = this.props;
     return (
       <CurrencyContextConsumer>
         {({ currencies }) => (
-          <Select
-            value={selectedCurrency}
-            renderValue={() => selectedCurrency}
-            onChange={selectCurrency(currencies)}
-            MenuProps={{
-              getContentAnchorEl: null,
-              anchorOrigin: {
-                vertical: "bottom",
-                horizontal: "left"
-              }
+          <CurrenciesMenuDataContextConsumer>
+            {({ currenciesMenu }) => {
+              return (
+                <Select
+                  value={selectedCurrency}
+                  renderValue={() => selectedCurrency}
+                  onChange={selectCurrency(currencies)}
+                  MenuProps={{
+                    getContentAnchorEl: null,
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left"
+                    }
+                  }}
+                >
+                  {currenciesMenu &&
+                    currenciesMenu.selected &&
+                    currenciesMenu.selected.map(currency => (
+                      <MenuItem value={currency} key={currency}>
+                        {currency}
+                      </MenuItem>
+                    ))}
+                </Select>
+              );
             }}
-          >
-            {availableCurrencies.map(currency => (
-              <MenuItem value={currency} key={currency}>
-                {currency}
-              </MenuItem>
-            ))}
-          </Select>
+          </CurrenciesMenuDataContextConsumer>
         )}
       </CurrencyContextConsumer>
     );
@@ -44,9 +46,6 @@ export class SelectCurrencyComponent extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  availableCurrencies: selectAvailableCurrencies(ownProps.currencyFieldType)(
-    state
-  ),
   selectedCurrency: getSelectedCurrency(ownProps.currencyFieldType)(state)
 });
 

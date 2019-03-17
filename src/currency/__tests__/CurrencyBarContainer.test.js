@@ -55,6 +55,61 @@ describe("CurrencyBarComponent", () => {
     expect(wrapper.find(".currency__bar__text").text()).toEqual("1€ = 123 $");
   });
 
+  it("should display the source currency name when missing symbols", () => {
+    outer = shallow(
+      <CurrencyBarComponent
+        selectedSourceCurrency="CNY"
+        selectedTargetCurrency="USD"
+      />
+    );
+    ComponentWithContext = outer.props().children;
+
+    const wrapper = shallow(
+      <ComponentWithContext
+        currencies={[{ base: "CNY", rates: { USD: "123" } }]}
+      />
+    );
+
+    expect(wrapper.find(".currency__bar__text").text()).toEqual("1CNY = 123 $");
+  });
+
+  it("should display the target currency name when missing symbols", () => {
+    outer = shallow(
+      <CurrencyBarComponent
+        selectedSourceCurrency="EUR"
+        selectedTargetCurrency="CNY"
+      />
+    );
+    ComponentWithContext = outer.props().children;
+    const wrapper = shallow(
+      <ComponentWithContext
+        currencies={[{ base: "EUR", rates: { CNY: "123" } }]}
+      />
+    );
+
+    expect(wrapper.find(".currency__bar__text").text()).toEqual("1€ = 123 CNY");
+  });
+
+  it("should display the source and target currency name when missing symbols", () => {
+    outer = shallow(
+      <CurrencyBarComponent
+        selectedSourceCurrency="SGD"
+        selectedTargetCurrency="CNY"
+      />
+    );
+
+    ComponentWithContext = outer.props().children;
+    const wrapper = shallow(
+      <ComponentWithContext
+        currencies={[{ base: "SGD", rates: { CNY: "123" } }]}
+      />
+    );
+
+    expect(wrapper.find(".currency__bar__text").text()).toEqual(
+      "1SGD = 123 CNY"
+    );
+  });
+
   it("should match snapshot", () => {
     const wrapper = shallow(
       <ComponentWithContext

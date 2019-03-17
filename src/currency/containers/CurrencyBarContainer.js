@@ -28,9 +28,11 @@ export const CurrencyBarComponent = ({
               <div className="currency__bar">
                 <ShowChartIcon />
                 <div className="currency__bar__text">
-                  {`1${CURRENCY_SYMBOL[selectedSourceCurrencyContext.base]} = ${
+                  {`1${CURRENCY_SYMBOL[selectedSourceCurrencyContext.base] ||
+                    selectedSourceCurrencyContext.base} = ${
                     selectedSourceCurrencyContext.rates[selectedTargetCurrency]
-                  } ${CURRENCY_SYMBOL[selectedTargetCurrency]}`}
+                  } ${CURRENCY_SYMBOL[selectedTargetCurrency] ||
+                    selectedTargetCurrency}`}
                 </div>
               </div>
             )}

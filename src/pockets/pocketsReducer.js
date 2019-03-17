@@ -3,6 +3,7 @@ import {
   calculateContextCurrencyAmount,
   twoDigitsLimitDecimals
 } from "../utils";
+import { SELECT_MENU_CURRENCY } from "../currency/redux/currencyActionTypes";
 
 export const pocketsReducer = (
   state = {
@@ -48,6 +49,16 @@ export const pocketsReducer = (
       };
 
       return { ...state, ...newBalanceTarget, ...newBalanceSource };
+
+    case SELECT_MENU_CURRENCY:
+      const selectedCurrenciesObject = action.selectedCurrencies.reduce(
+        (acc, selectedCurrency) => ({
+          ...acc,
+          [selectedCurrency]: { amount: 0 }
+        }),
+        {}
+      );
+      return { ...selectedCurrenciesObject, ...state };
     default:
       return state;
   }

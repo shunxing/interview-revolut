@@ -33,16 +33,6 @@ ShallowWrapper {
         className="currency--middle"
       >
         <div
-          className="currency__bar"
-        >
-          <pure(ShowChartIcon) />
-          <div
-            className="currency__bar__text"
-          >
-            1€ = 123 $
-          </div>
-        </div>
-        <div
           className="currency__switch-currency"
         >
           <WithStyles(Fab)
@@ -68,16 +58,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div
-            className="currency__bar"
-          >
-            <pure(ShowChartIcon) />
-            <div
-              className="currency__bar__text"
-            >
-              1€ = 123 $
-            </div>
-          </div>,
+          undefined,
           <div
             className="currency__switch-currency"
           >
@@ -100,47 +81,7 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <pure(ShowChartIcon) />,
-              <div
-                className="currency__bar__text"
-              >
-                1€ = 123 $
-              </div>,
-            ],
-            "className": "currency__bar",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {},
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "1€ = 123 $",
-                "className": "currency__bar__text",
-              },
-              "ref": null,
-              "rendered": "1€ = 123 $",
-              "type": "div",
-            },
-          ],
-          "type": "div",
-        },
+        undefined,
         Object {
           "instance": null,
           "key": undefined,
@@ -221,16 +162,6 @@ ShallowWrapper {
           className="currency--middle"
         >
           <div
-            className="currency__bar"
-          >
-            <pure(ShowChartIcon) />
-            <div
-              className="currency__bar__text"
-            >
-              1€ = 123 $
-            </div>
-          </div>
-          <div
             className="currency__switch-currency"
           >
             <WithStyles(Fab)
@@ -256,16 +187,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <div
-              className="currency__bar"
-            >
-              <pure(ShowChartIcon) />
-              <div
-                className="currency__bar__text"
-              >
-                1€ = 123 $
-              </div>
-            </div>,
+            undefined,
             <div
               className="currency__switch-currency"
             >
@@ -288,47 +210,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <pure(ShowChartIcon) />,
-                <div
-                  className="currency__bar__text"
-                >
-                  1€ = 123 $
-                </div>,
-              ],
-              "className": "currency__bar",
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "1€ = 123 $",
-                  "className": "currency__bar__text",
-                },
-                "ref": null,
-                "rendered": "1€ = 123 $",
-                "type": "div",
-              },
-            ],
-            "type": "div",
-          },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,

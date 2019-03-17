@@ -15,9 +15,14 @@ describe("ExchangeMenuComponent", () => {
   });
 
   it("should correctly render children", () => {
-    const outer = shallow(<ExchangeMenuComponent />),
-      ComponentWithContext = outer.props().children;
-    const wrapper = shallow(<ComponentWithContext />);
+    const outer = shallow(<ExchangeMenuComponent classes={{}} />),
+      ComponentWithCurrencyContext = outer.props().children;
+    const outerBis = shallow(<ComponentWithCurrencyContext />);
+    const ComponentWithMenuCurrencyContext = outerBis.props().children;
+
+    const wrapper = shallow(
+      <ComponentWithMenuCurrencyContext currenciesMenu={{ available: [] }} />
+    );
 
     expect(wrapper.find(ExchangeInput)).toHaveLength(2);
     expect(wrapper.find(CurrencyBarContainer)).toHaveLength(1);
@@ -25,9 +30,18 @@ describe("ExchangeMenuComponent", () => {
   });
   it("should correctly render children with conversion button", () => {
     const converMoney = jest.fn();
-    const outer = shallow(<ExchangeMenuComponent convertMoney={converMoney} />),
-      ComponentWithContext = outer.props().children;
-    const wrapper = shallow(<ComponentWithContext />);
+    const outer = shallow(
+        <ExchangeMenuComponent convertMoney={converMoney} classes={{}} />
+      ),
+      ComponentWithCurrencyContext = outer.props().children;
+    const outerBis = shallow(<ComponentWithCurrencyContext />);
+    const ComponentWithMenuCurrencyContext = outerBis.props().children;
+
+    const wrapper = shallow(
+      <ComponentWithMenuCurrencyContext
+        /** to simulate context */ currenciesMenu={{ available: [] }}
+      />
+    );
 
     expect(wrapper.find(ExchangeInput)).toHaveLength(2);
     expect(wrapper.find(CurrencyBarContainer)).toHaveLength(1);

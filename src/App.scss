@@ -37,6 +37,7 @@ body {
 
       &--left {
         justify-content: flex-end;
+        flex: 2 1 0%;
       }
     }
 
@@ -81,9 +82,16 @@ body {
     margin: 0;
   }
 
-  .title {
+  .header {
     font-size: 1.5rem;
     color: white;
     font-weight: bold;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    padding: 0px 10px;
+    width: 100%;
+    position: absolute;
+    top: 20px;
   }
 }
