@@ -2,6 +2,7 @@ import { createSelector } from "reselect";
 import { POCKETS_CURRENCY } from "./constants";
 import get from "lodash/get";
 export const getSelectedCurrencies = state => state.currency;
+
 export const selectAvailableCurrencies = currencyFieldType =>
   createSelector(
     [getSelectedCurrencies],
