@@ -16,7 +16,7 @@ export const CurrencyBarComponent = ({
   <CurrencyContextConsumer>
     {context => {
       const selectedSourceCurrencyContext = context.currencies.find(
-        currency => currency.base === selectedSourceCurrency
+        currency => currency && currency.base === selectedSourceCurrency
       );
       return (
         <>

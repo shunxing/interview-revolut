@@ -37,7 +37,10 @@ body {
 
       &--left {
         justify-content: flex-end;
-        flex: 2 1 0%;
+
+        @media screen and (max-width: 767px) {
+          flex: 2 1 0%;
+        }
       }
     }
 
@@ -88,9 +91,8 @@ body {
     font-weight: bold;
     display: flex;
     -webkit-justify-content: space-around;
-    justify-content: space-around;
-    padding: 0px 10px;
-    width: 100%;
+    justify-content: space-between;
+    width: 95%;
     position: absolute;
     top: 20px;
   }
